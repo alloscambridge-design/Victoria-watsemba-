@@ -1,0 +1,77 @@
+<section id="apply">
+  <h2>Student Application & Admission</h2>
+  <p style="text-align:center; margin-bottom:20px;">
+    Complete this form to apply. We’ll contact you within 24 hours to schedule a free consultation.
+  </p>
+  
+  <form action="mailto:alloscambridge@gmail.com" method="post" enctype="text/plain">
+    <div class="form-grid">
+      <div>
+        <label>Student Full Name *</label>
+        <input type="text" name="Student Name" required>
+      </div>
+      
+      <div>
+        <label>Age *</label>
+        <input type="number" name="Age" min="5" max="18" required>
+      </div>
+      
+      <div>
+        <label>Grade/Level *</label>
+        <select name="Grade" required>
+          <option value="">Select Grade</option>
+          <option>Primary 1-6</option>
+          <option>Lower Secondary 7-9</option>
+          <option>IGCSE 10-11</option>
+          <option>A-Level 12-13</option>
+        </select>
+      </div>
+      
+      <div>
+        <label>Program Interested In *</label>
+        <select name="Program" required>
+          <option value="">Select Program</option>
+          <option>Primary & Lower Secondary</option>
+          <option>IGCSE</option>
+          <option>A-Levels</option>
+          <option>1-to-1 Tutoring</option>
+        </select>
+      </div>
+      
+      <div>
+        <label>Parent/Guardian Name *</label>
+        <input type="text" name="Parent Name" required>
+      </div>
+      
+      <div>
+        <label>Parent Email *</label>
+        <input type="email" name="Parent Email" required>
+      </div>
+      
+      <div>
+        <label>Parent WhatsApp/Phone *</label>
+        <input type="tel" name="Parent Phone" required>
+      </div>
+      
+      <div>
+        <label>Country *</label>
+        <input type="text" name="Country" required>
+      </div>
+    </div>
+    
+    <div class="full-width">
+      <label>Subjects Interested In</label>
+      <input type="text" name="Subjects" placeholder="e.g. Math, English, Physics">
+    </div>
+    
+    <div class="full-width">
+      <label>Any Learning Needs or Questions?</label>
+      <textarea name="Message" rows="4" placeholder="Tell us about your child’s learning goals, challenges, or preferred schedule"></textarea>
+    </div>
+    
+    <button type="submit" class="btn full-width">Submit Application</button>
+    <p style="font-size:0.85em; text-align:center; color:#666;">
+      By submitting, you agree to be contacted about your application.
+    </p>
+  </form>
+</section>
