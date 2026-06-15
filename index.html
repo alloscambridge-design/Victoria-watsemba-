@@ -55,6 +55,76 @@
   .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
   .faq-answer p { padding:0 20px 16px; margin:0; line-height:1.8; }
   
+  /* Gallery Styles */
+  #gallery { padding: 60px 20px; background: var(--light-gray); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    max-width: 1100px;
+    margin: 30px auto 0;
+  }
+  .gallery-item {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    aspect-ratio: 4/3;
+  }
+  .gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.08);
+  }
+  
+  /* Resources Tabs Styles */
+  #resources { padding: 60px 20px; }
+  .resource-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 12px 24px;
+    background: var(--light-gray);
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    transition: 0.2s;
+    font-family: inherit;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .video-card { padding: 20px; }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 15px 0;
+    background: #000;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
   form { display:grid; gap:14px; max-width:700px; margin:auto; }
   .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   input, select, textarea { padding:12px; border:2px solid #ddd; border-radius:6px; font-size:1em; font-family:inherit; transition:0.2s; }
@@ -97,7 +167,9 @@
     <div class="nav-links" id="navLinks">
       <a href="#about" onclick="toggleMenu()">About</a>
       <a href="#programs" onclick="toggleMenu()">Programs</a>
+      <a href="#gallery" onclick="toggleMenu()">Gallery</a>
       <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+      <a href="#resources" onclick="toggleMenu()">Resources</a>
       <a href="#faq" onclick="toggleMenu()">FAQ</a>
       <a href="#apply" onclick="toggleMenu()">Apply</a>
       <a href="#contact" onclick="toggleMenu()">Contact</a>
@@ -147,6 +219,31 @@
   </ol>
 </section>
 
+<!-- GALLERY SECTION -->
+<section id="gallery">
+  <h2>Life at Allos Cambridge</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="gallery1.jpg" alt="Students in live class">
+    </div>
+    <div class="gallery-item">
+      <img src="gallery2.jpg" alt="Online tutoring session">
+    </div>
+    <div class="gallery-item">
+      <img src="gallery3.jpg" alt="Students receiving certificates">
+    </div>
+    <div class="gallery-item">
+      <img src="gallery4.jpg" alt="Study group discussion">
+    </div>
+    <div class="gallery-item">
+      <img src="gallery5.jpg" alt="Teacher explaining concepts">
+    </div>
+    <div class="gallery-item">
+      <img src="gallery6.jpg" alt="Student studying at home">
+    </div>
+  </div>
+</section>
+
 <section id="pricing">
   <h2>Pricing</h2>
   <div class="grid pricing">
@@ -167,6 +264,69 @@
       <div class="price">$25</div>
       <p>per hour</p>
       <p>Fully personalized sessions</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES SECTION -->
+<section id="resources">
+  <h2>Free Notes & Lesson Videos</h2>
+  <p style="text-align:center; margin-bottom:30px;">Sample resources from Allos Cambridge. Full library access for enrolled students.</p>
+  
+  <div class="resource-tabs">
+    <button class="tab-btn active" onclick="showTab('notes')">📄 Download Notes</button>
+    <button class="tab-btn" onclick="showTab('videos')">🎥 Lesson Videos</button>
+  </div>
+  
+  <div id="notes" class="tab-content active">
+    <div class="grid">
+      <div class="card">
+        <h3>IGCSE Math: Quadratic Equations</h3>
+        <p>Complete notes with formulas, worked examples + 20 practice questions</p>
+        <a href="notes/quadratic-equations.pdf" class="btn" target="_blank">Download PDF</a>
+      </div>
+      <div class="card">
+        <h3>IGCSE Physics: Electricity</h3>
+        <p>Key concepts, diagrams, and past paper question breakdown</p>
+        <a href="notes/electricity.pdf" class="btn" target="_blank">Download PDF</a>
+      </div>
+      <div class="card">
+        <h3>A-Level Biology: Cell Structure</h3>
+        <p>Detailed notes + exam tips from UK examiners</p>
+        <a href="notes/cell-structure.pdf" class="btn" target="_blank">Download PDF</a>
+      </div>
+    </div>
+  </div>
+  
+  <div id="videos" class="tab-content">
+    <div class="grid">
+      <div class="card video-card">
+        <h3>Solving Quadratic Equations</h3>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Quadratic Equations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p>IGCSE Mathematics | 45 minutes</p>
+      </div>
+      
+      <div class="card video-card">
+        <h3>Introduction to Probability</h3>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Probability" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p>IGCSE Mathematics | 38 minutes</p>
+      </div>
+      
+      <div class="card video-card">
+        <h3>Ohm's Law Explained</h3>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Ohm's Law" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p>IGCSE Physics | 42 minutes</p>
+      </div>
+    </div>
+    
+    <div style="text-align:center; margin-top:30px;">
+      <a href="https://www.youtube.com/@AllosCambridge" target="_blank" class="btn" style="background:#FF0000;">📺 Subscribe on YouTube</a>
     </div>
   </div>
 </section>
@@ -209,21 +369,35 @@
   <div class="faq-item">
     <div class="faq-question" onclick="toggleFAQ(this)">Can students join mid-term?</div>
     <div class="faq-answer">
-      <p>Yes. We offer rolling admissions with a catch-up plan and access to recordings.</p>
+      <p>Yes. We offer rolling admissions with a catch-up plan and access to recordings of all classes.</p>
     </div>
   </div>
   
   <div class="faq-item">
     <div class="faq-question" onclick="toggleFAQ(this)">How are exams handled?</div>
     <div class="faq-answer">
-      <p>We help you register for Cambridge exams at authorized centers in your country and provide full exam prep.</p>
+      <p>We help you register for Cambridge exams at authorized centers in your country and provide full exam prep with mock tests.</p>
     </div>
   </div>
   
   <div class="faq-item">
     <div class="faq-question" onclick="toggleFAQ(this)">What's the class size?</div>
     <div class="faq-answer">
-      <p>Group classes have 8-12 students max. 1-to-1 tutoring is also available.</p>
+      <p>Group classes have 8-12 students max for personal attention. 1-to-1 tutoring is also available.</p>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">Do you provide exam registration support?</div>
+    <div class="faq-answer">
+      <p>Yes. Our team guides you through Cambridge exam registration at the nearest test center and provides all required documents.</p>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFAQ(this)">Do students get recordings of classes?</div>
+    <div class="faq-answer">
+      <p>Yes. All live classes are recorded and uploaded to the student portal within 24 hours for revision anytime.</p>
     </div>
   </div>
 </section>
@@ -344,6 +518,17 @@ function toggleFAQ(element) {
   } else {
     answer.style.maxHeight = 0;
   }
+}
+
+function showTab(tabName) {
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.getElementById(tabName).classList.add('active');
+  event.target.classList.add('active');
 }
 
 // Form handling
