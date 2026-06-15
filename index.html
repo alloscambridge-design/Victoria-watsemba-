@@ -19,13 +19,12 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Segoe UI', Arial, sans-serif; color:#222; line-height:1.6; background:var(--white); }
   
-  nav { background:var(--blue); color:var(--white); position:sticky; top:0; z-index:1000; }
+  nav { background:rgba(30, 58, 138, 0.9); color:var(--white); position:sticky; top:0; z-index:1000; backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.1); }
   .nav-container { max-width:1100px; margin:auto; padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
-  .logo { font-size:1.3em; font-weight:bold; letter-spacing:1px; }
-  .logo span { color:var(--red); }
+  .logo img { height: 45px; width: auto; display: block; }
   .menu-btn { display:none; background:none; border:none; color:var(--white); font-size:1.8em; cursor:pointer; }
   .nav-links { display:flex; gap:20px; }
-  .nav-links a { color:var(--white); text-decoration:none; font-weight:500; }
+  .nav-links a { color:var(--white); text-decoration:none; font-weight:500; transition:0.2s; }
   .nav-links a:hover { color:var(--red); }
 
   header { background:linear-gradient(135deg, var(--blue) 0%, #1e40af 100%); color:var(--white); text-align:center; padding:60px 20px 80px; }
@@ -78,6 +77,7 @@
     .menu-btn { display:block; }
     .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:var(--blue); flex-direction:column; padding:15px 20px; gap:15px; }
     .nav-links.active { display:flex; }
+    .logo img { height: 38px; }
     header h1 { font-size:2em; }
     header p { font-size:1em; }
     section { padding:35px 16px; }
@@ -90,7 +90,9 @@
 
 <nav>
   <div class="nav-container">
-    <div class="logo">ALLOS <span>CAMBRIDGE</span></div>
+    <div class="logo">
+      <img src="logo.png" alt="Allos Cambridge Online School">
+    </div>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="#about" onclick="toggleMenu()">About</a>
@@ -226,7 +228,6 @@
   </div>
 </section>
 
-<!-- Application & Admission Form -->
 <section id="apply">
   <h2>Student Application & Admission</h2>
   <p style="text-align:center; margin-bottom:20px;">Fill this form to start your application. We'll contact you within 24 hours to schedule a free consultation.</p>
@@ -352,31 +353,11 @@ document.getElementById('applicationForm').addEventListener('submit', async func
   const formData = new FormData(this);
   const data = Object.fromEntries(formData);
   
-  // Send to email service
-  const emailText = `
-New Application Submission:
-
-Student Name: ${data['Student Name']}
-Age: ${data['Age']}
-Grade: ${data['Grade']}
-Program: ${data['Program']}
-Parent Name: ${data['Parent Name']}
-Parent Email: ${data['Parent Email']}
-Parent Phone: ${data['Parent Phone']}
-Country: ${data['Country']}
-Subjects: ${data['Subjects']}
-Message: ${data['Message']}
-  `;
-  
   try {
-    // Fallback: Show success and copy details
     const successMsg = document.getElementById('successMessage');
     successMsg.classList.add('show');
     this.reset();
-    
-    // Log to console (in real deployment, use backend service)
     console.log('Application Data:', data);
-    
     setTimeout(() => {
       successMsg.classList.remove('show');
     }, 5000);
@@ -395,9 +376,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const successMsg = document.getElementById('contactSuccessMessage');
     successMsg.classList.add('show');
     this.reset();
-    
     console.log('Contact Data:', data);
-    
     setTimeout(() => {
       successMsg.classList.remove('show');
     }, 5000);
